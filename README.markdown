@@ -29,15 +29,17 @@ to make Rails regenerate assets. After assets regeneration, `assets/source_maps`
 
 ## Usage
 
-To see something like this ![screenshot](https://www.evernote.com/shard/s36/sh/d0c3c46e-d9e7-47d0-b23b-118ca1c77add/d2268cefa01e273ecfda4aba600c8640/res/c14f6a6d-c418-4bdd-80c2-5025dc035221/skitch.png?resizeSmall&width=832) you need to enable source maps in Google Chrome.
+To see something like this ![screenshot](https://dl.dropboxusercontent.com/u/21012539/screenshots/screenshot.png) you need to enable source maps in Google Chrome.
 
 To enable source maps open Chrome inspector go to [chrome://flags/#enable-devtools-experiments](chrome://flags/#enable-devtools-experiments) and `Enable Developer Tools experiments`. Then restart Google Chrome.
 
-After restart, go to inspector `experimental` settings and enable `Sass stylesheet debugging` and finally in general settings check `Enable source maps`.
+After restart, go to inspector `Experiments` settings and enable `Sass stylesheet debugging`.
 
-![experimental settings](https://www.evernote.com/shard/s36/sh/323d6df5-e5a5-467d-89bb-2e933800292a/aba9bcbf79b533e3ab625e9dc8961f61/res/f90634d7-2267-4a53-8a84-0e4baafd56d4/skitch.png?resizeSmall&width=832)
+![experimental settings](https://dl.dropboxusercontent.com/u/21012539/screenshots/screenshot_experiments.png)
 
-![general settings](https://www.evernote.com/shard/s36/sh/7fc204d3-b0b2-47a7-9df9-d2d03f08fb2c/46dab5f794b32ede79b9c482b21ca9fa/res/bc1ba16c-e08f-41b4-9417-23c1384b89d9/skitch.png?resizeSmall&width=832)
+And finally in `General` settings check `Enable source maps`.
+
+![general settings](https://dl.dropboxusercontent.com/u/21012539/screenshots/screenshot_general.png)
 
 Enabling source maps may vary in different Chrome versions. For more info please see [Working with CSS Preprocessors](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors); part _Using Sass with CSS source maps_.
 
