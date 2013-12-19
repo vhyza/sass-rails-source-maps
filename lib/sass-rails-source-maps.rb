@@ -10,10 +10,6 @@ module SassRailsSourceMaps
 
 end
 
-Sprockets::ScssTemplate.class_eval do
-  include SassRailsSourceMaps::SassTemplate
-end
+Sprockets::ScssTemplate.send(:include, SassRailsSourceMaps::SassTemplate)
 
-Sprockets::SassTemplate.class_eval do
-  include SassRailsSourceMaps::SassTemplate
-end
+Sprockets::SassTemplate.send(:include, SassRailsSourceMaps::SassTemplate)
