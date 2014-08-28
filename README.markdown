@@ -1,5 +1,7 @@
 # Sass Rails Source Maps
 
+NOTE: This gem is probably __not working__ because it depends on `sass` version `3.3` and higher. Until `sass-rails` [issue](https://github.com/rails/sass-rails/pull/192) is resolved, you can try [sass-rails-5.0.0.beta1](https://github.com/vhyza/sass-rails-source-maps/tree/sass-rails-5.0.0.beta1) branch.
+
 This gem allows you to see your Rails 4 `.scss` source files in Google Chrome inspector, which can be useful for debugging.
 
 `debug_info` option available in stable [sass](http://sass-lang.com/) gem is no longer working in Google Chrome, because Chrome now supports Source Map [v3](https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-_2gc6fAH0KY0k) only.
