@@ -24,8 +24,7 @@ to use `sass` gem with Source Maps v3 support, which is currently pre-release ve
 
 After that, run:
 
-    $ rm -rf tmp/cache/assets
-    $ rm -rf public/assets
+    $ rake assets:clobber
 
 to make Rails regenerate assets. After assets regeneration, `assets/source_maps` containing `sass` source maps is created in `public` directory.
 
