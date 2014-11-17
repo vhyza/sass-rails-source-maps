@@ -14,7 +14,7 @@ Source Maps are supported by `sass` gem in version `3.3` and higher. Unfortunate
 
 ````ruby
 group :development do
-  gem 'sass-rails-source-maps', git: 'https://github.com/vhyza/sass-rails-source-maps.git', branch: 'sass-rails-5.0.0.beta1'
+  gem 'sass-rails-source-maps', github: 'vhyza/sass-rails-source-maps', branch: 'sass-rails-5.0.0.beta1'
 end
 ````
 
@@ -41,8 +41,7 @@ bundle update sass-rails
 * After that, run:
 
 ````
-rm -rf tmp/cache/assets
-rm -rf public/assets
+rake assets:clobber
 ````
 
 to make Rails regenerate assets. After assets regeneration, `assets/source_maps` containing `sass` source maps is created in `public` directory.
