@@ -24,8 +24,8 @@ module SassRailsSourceMaps
         cache:               ::Rails.application.config.assets.debug,
         line_numbers:        ::Rails.application.config.sass.line_numbers,
         line_comments:       ::Rails.application.config.sass.line_comments,
-        importer:            SassImporter.new(context.pathname.to_s),
-        load_paths:          context.environment.paths.map { |path| SassImporter.new(path.to_s) },
+        importer:            SassImporter.new(context, context.pathname.to_s),
+        load_paths:          context.environment.paths.map { |path| SassImporter.new(context, path.to_s) },
         sprockets:           {
           context:     context,
           environment: context.environment
