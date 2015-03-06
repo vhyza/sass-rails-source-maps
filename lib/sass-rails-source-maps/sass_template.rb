@@ -32,7 +32,9 @@ module SassRailsSourceMaps
         }
       }
 
-      result, mapping = ::Sass::Engine.new(data, options).render_with_sourcemap("/#{SOURCE_MAPS_DIRECTORY}/#{options[:sourcemap_filename]}")
+      url_root = Rails.configuration.relative_url_root.chomp('/')
+      path = "#{url_root}/#{SOURCE_MAPS_DIRECTORY}/#{options[:sourcemap_filename]}"
+      result, mapping = ::Sass::Engine.new(data, options).render_with_sourcemap(path)
 
       write_output(data, ::Rails.root.join("public", SOURCE_MAPS_DIRECTORY, basename).to_s)
       write_output(mapping.to_json(
