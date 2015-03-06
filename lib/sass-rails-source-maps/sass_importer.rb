@@ -1,6 +1,5 @@
 module SassRailsSourceMaps
-  class SassImporter < Sprockets::SassImporter
-
+  class SassImporter < Sass::Rails::SassImporter
     def public_url(uri, sourcemap_dir = nil)
       url_root = Rails.configuration.relative_url_root.chomp('/')
       return sourcemap_dir if sourcemap_dir == Rails.root.to_s
@@ -11,6 +10,5 @@ module SassRailsSourceMaps
       end
       "#{url_root}/#{target_dir}/#{File.basename(uri)}"
     end
-
   end
 end
