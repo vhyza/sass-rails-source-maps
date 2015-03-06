@@ -13,17 +13,11 @@ module SassRailsSourceMaps
     end
 
     def evaluate_with_source_maps(context, locals, &block)
-      cache_store = Sprockets::SassCacheStore.new(context.environment)
-
       options = {
         sourcemap_filename:  ::Sass::Util::sourcemap_name(basename),
         filename:            eval_file,
         line:                line,
         syntax:              syntax,
-        cache_store:         cache_store,
-        cache:               ::Rails.application.config.assets.debug,
-        line_numbers:        ::Rails.application.config.sass.line_numbers,
-        line_comments:       ::Rails.application.config.sass.line_comments,
         importer:            SassImporter.new(context.pathname.to_s),
         load_paths:          context.environment.paths.map { |path| SassImporter.new(path.to_s) },
         sprockets:           {
@@ -32,7 +26,11 @@ module SassRailsSourceMaps
         }
       }
 
-      result, mapping = ::Sass::Engine.new(data, options).render_with_sourcemap("/#{SOURCE_MAPS_DIRECTORY}/#{options[:sourcemap_filename]}")
+      sass_options = context.sass_config.merge(options)
+
+      url_root = Rails.configuration.relative_url_root.chomp('/')
+      path = "#{url_root}/#{SOURCE_MAPS_DIRECTORY}/#{options[:sourcemap_filename]}"
+      result, mapping = ::Sass::Engine.new(data, sass_options).render_with_sourcemap(path)
 
       write_output(data, ::Rails.root.join("public", SOURCE_MAPS_DIRECTORY, basename).to_s)
       write_output(mapping.to_json(
