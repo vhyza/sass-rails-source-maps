@@ -1,6 +1,6 @@
 # Sass Rails Source Maps
 
-NOTE: This gem is probably __not working__ because it depends on `sass` version `3.3` and higher. Until `sass-rails` [issue](https://github.com/rails/sass-rails/pull/192) is resolved, you can try [sass-rails-5.0.0.beta1](https://github.com/vhyza/sass-rails-source-maps/tree/sass-rails-5.0.0.beta1) branch.
+__NOTE__: This gem requires `sass-rails` version `5.0.0`
 
 This gem allows you to see your Rails 4 `.scss` source files in Google Chrome inspector, which can be useful for debugging.
 
@@ -8,7 +8,9 @@ This gem allows you to see your Rails 4 `.scss` source files in Google Chrome in
 
 ## Installation
 
-Add this to your application's Gemfile :
+Source Maps are supported by `sass` gem in version `3.3` and higher. Unfortunately, `sass-rails`, the `rails` dependency, freezes `sass` gem to version `~> 3.2.0`. To use this gem, you need to follow these steps:
+
+* Add `sass-rails-source-maps` to your application's Gemfile :
 
 ````ruby
 group :development do
@@ -16,36 +18,43 @@ group :development do
 end
 ````
 
-And then execute:
+This branch depends on `sass-rails` version `5.0.0` which has more relaxed dependency for `sass` gem. So to avoid version conflict you need to:
 
-    $ bundle update sass
+* Unfreeze `sass-rails` gem in your Gemfile (delete version for `sass-rails`)
 
-to use `sass` gem with Source Maps v3 support, which is currently pre-release version.
+For example, in new `Rails 4.1.5` application change line
 
-After that, run:
+    gem 'sass-rails', '~> 4.0.3'
 
-    $ rake assets:clobber
+to
+
+    gem 'sass-rails'
+
+in your `Gemfile`.
+
+* And then execute:
+
+````
+bundle update sass-rails
+````
+
+* After that, run:
+
+````
+rake assets:clobber
+````
 
 to make Rails regenerate assets. After assets regeneration, `assets/source_maps` containing `sass` source maps is created in `public` directory.
 
 ## Usage
 
-To see something like this ![screenshot](https://dl.dropboxusercontent.com/u/21012539/screenshots/screenshot.png) you need to enable source maps in Google Chrome.
+If everything works fine, you should see something like this ![screenshot](https://dl.dropboxusercontent.com/u/21012539/screenshots/screenshot.png)
 
-To enable source maps open Chrome inspector go to [chrome://flags/#enable-devtools-experiments](chrome://flags/#enable-devtools-experiments) and `Enable Developer Tools experiments`. Then restart Google Chrome.
-
-After restart, go to inspector `Experiments` settings and enable `Sass stylesheet debugging`.
-
-![experimental settings](https://dl.dropboxusercontent.com/u/21012539/screenshots/screenshot_experiments.png)
-
-And finally in `General` settings check `Enable source maps`.
-
-![general settings](https://dl.dropboxusercontent.com/u/21012539/screenshots/screenshot_general.png)
-
-Enabling source maps may vary in different Chrome versions. For more info please see [Working with CSS Preprocessors](https://developers.google.com/chrome-developer-tools/docs/css-preprocessors); part _Using Sass with CSS source maps_.
+Enabling source maps may vary in different Chrome versions. For more info please see [Working with CSS Preprocessors](https://developer.chrome.com/devtools/docs/css-preprocessors#toc-enabling-css-source-maps).
 
 ## Notes
-* This gem is Rails 4 compatible only
+* This gem is not intended for production usage.
+* This gem is Rails 4.x compatible only
 * If you wan't to see `coffeescript` files in Google Chrome inspector you can use [coffee-rails-source-maps](https://github.com/markbates/coffee-rails-source-maps) gem.
 
 
