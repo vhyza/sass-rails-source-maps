@@ -55,8 +55,6 @@ Enabling source maps may vary in different Chrome versions. For more info please
 ## Notes
 * This gem is not intended for production usage.
 * This gem is Rails 4.x compatible only
-* If you wan't to see `coffeescript` files in Google Chrome inspector you can use [coffee-rails-source-maps](https://github.com/markbates/coffee-rails-source-maps) gem.
-
 
 ## Contributing
 
