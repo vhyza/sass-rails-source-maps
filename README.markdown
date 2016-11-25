@@ -1,4 +1,10 @@
-# Sass Rails Source Maps
+# DEPRECATED: Sass Rails Source Maps
+
+## This gem is not under active developement
+
+As an alternative, you can try to use [sassc-rails with inline source maps support](https://github.com/sass/sassc-rails#inline-source-maps).
+
+---
 
 __NOTE__: This gem requires `sass-rails` version `5.0.0`
 
