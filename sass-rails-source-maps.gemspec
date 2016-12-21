@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_dependency "rails"
-  gem.add_dependency "sprockets", ">= 2.3.0"
+  gem.add_dependency "sprockets", ">= 2.3.0", "< 3.0.0"
   gem.add_dependency "sass",       "~> 3.3"
   gem.add_dependency "sass-rails", "~> 5.0.0.beta1"
 
